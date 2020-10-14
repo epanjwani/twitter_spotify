@@ -3,21 +3,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script></head>
 <body>
 <script>
-let request_url = "https://api.spotify.com/v1/browse/new-releases";
+let request_url = "";
+console.log("pre first success");
 
 $.ajax({
-    method: "POST",
-    url: "https://accounts.spotify.com/api/token",
-    headers: { 'Authorization': 'Bearer ' + "BQCn7MGzkJA2F-yIu-Boo9M1b1PEltONvNdiyUO73HqK7gYaS20v4429qhdKL2sW37Dpzpz0IRRACUQa4JI"},
-    success: function(){
-        $.ajax({
-            method: "GET",
-            url: request_url,
-            success: function(unparsed_data){
-                data = JSON.parse(unparsed_data);
-                console.log(data);
-            }
-        });
+    method: "GET",
+    url: "https://api.spotify.com/v1/browse/new-releases",
+    headers: { 'Authorization' : 'Bearer ' + "BQCnSW6UnBqXB7YYJclOeZMJDdl4aKXdHYxosFd3PBDJeN7cE1k_fQzVbshx8A_ygCgR3lkLj3JzK7IuQzE"},
+    success: function(data){
+        console.log("data");
+	let parse = JSON.parse(data);
+	console.log(parse);
     }
 });
 
